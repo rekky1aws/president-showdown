@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Président Showdown</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" type="image/x-icon" href="images/france.ico">
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body onload=loader();>
+	<div id="zoneJoueurs">
+		<div id="joueur1" class="joueur">
+			
+		</div>
+		<div id="joueur2" class="joueur">
+			
+		</div>
+
+	</div>
+	<div class="buttonContainer">
+		<button onclick="loader();" class="boutons">Relancer</button>
+		<div id="resultat" class="boutons" onclick="window.alert('Arrete de me cliquer dessus, je suis pas un bouton utile');"></div>
+		<button onclick="startFight();" class="boutons">Combat</button>
+	</div>
+
+</body>
+</html>

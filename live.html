@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" href="basic.css">
+ 
+    <title>HTML EXO JS</title>
+</head>
+ 
+<body>
+    <!-- brotip -->
+    <!-- https://www.w3schools.com/js/js_htmldom_document.asp -->
+ 
+    <!-- getElementById : méthode , récup l'élément actuel par son id, c'est comme un sélecteur css
+    innerHTML : propriété , récup le contenu , utile aussi pour remplacer-->
+ 
+    <!-- 1. afficher "BONJOUR MADAME LA MINISTRE" dans la balise ci-dessous, via le js -->
+    <p id="salut">Bonjour cher utilisateur.</p>
+    <script>
+        let hello = "BONJOUR MADAME LA MINISTRE";
+        let refSalut = document.getElementById("salut");
+        refSalut.innerHTML=hello;
+    </script>
+ 
+    <!-- 2. remplacer le logo github par une photo de l'élysée  -->
+    <img id="imageTest" src="https://cdn.dribbble.com/users/6569/screenshots/15810900/media/ba31ac56fc193c29841f6e4578f797b3.png?compress=1&resize=400x300&vertical=top"></img>
+    <script>
+        document.getElementById("imageTest").src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.cbc.ca%2F1.3295063.1446148887!%2FfileImage%2FhttpImage%2Fimage.jpg_gen%2Fderivatives%2Foriginal_780%2Felysee-palace-france.jpg&f=1&nofb=1";
+    </script>
+ 
+    <!-- 3. afficher une window popup demandant de se log à l'affichage de la page , brotip: utiliser window.prompt()
+    si l'utilisateur se login correctement, afficher une popup d'alert confirmant le succès du login
+    ex : 'ADMIN'
+    -->
+    <!-- vous vous rendez compte de la priorité d'appel des scripts -->
+    <script>
+        let users = ['ADMIN', 'e.macron', 'f.hollande', 'n.sarkozy', 'j.chirac', 'v.giscarddestaing'];
+        let entry = window.prompt("Saisissez votre nom d'utilisateur");
+        let flag = false;
+        users.forEach(element => {
+            if (element===entry) {
+                flag=true;
+            }
+        })
+        if (flag) {
+            window.alert("Bienvenue");
+        } else {
+            window.alert("Utilisateur incorrect !");
+        }
+    </script>
+ 
+ 
+    <!-- 4. a l'aide de l'event onclick a RAJOUTER sur la balise h1,
+     ajouter un appel de fonction pour changer le texte par un lien -->
+    <h1 onclick="changeToLink(this);">Clickez moi pour commander un café.</h1>
+    <script>
+        function changeToLink(e) {
+            e.innerHTML="<a href=\"https://youtu.be/dQw4w9WgXcQ\"target=\"blank\">"+e.innerHTML+"</a>";
+        }
+    </script>
+ 
+    <!-- 5. créer un boutton qui va afficher la date dans le dom -->
+    <button id="dateButton" onclick="displayDate();">Afficher l'heure</button>
+    <p id="dateDisplay"></p>
+    <script>
+        function displayDate() {
+            let laDate = new Date();
+            document.getElementById("dateDisplay").innerHTML=laDate.toDateString();
+        }
+    </script>
+ 
+    <!-- 6. changer le contenu html de la div au survol,
+         ...ahem... au mouseover en anglais -->
+    <div onmouseover="mouseOverFunct(this);">Survolez moi</div>
+ 
+    <script>
+        function mouseOverFunct(e) {
+            e.innerHTML="Vous m'avez survolé";
+            e.style.color="red";
+        }
+    </script>
+ 
+    <!-- 7. changer la couleur de fond de la balise avec l'id alarme
+        lors du click sur le bouton lancer l'alarme et changer son texte par "alarme lancée"-->
+    <p id="alarme">Devons nous lancer l'alarme</p>
+    <button onclick="launchAlrm(this);">Lancer l'alarme</button>
+    <script>
+        function launchAlrm(e) {
+            e.style.visibility="hidden";
+            let refDivAlarme = document.getElementById("alarme")
+            refDivAlarme.innerHTML="Alarme Lancée";
+            refDivAlarme.style.color="white";
+            refDivAlarme.style.backgroundColor="red";
+
+        }
+    </script>
+ 
+    <!-- 8 : afficher la div cachée au survol de la div changeStyleMouseover -->
+    <p id="changeStyleMouseover" onmouseover="displayHiddenDiv();">Afficher la div cachée</p>
+    <p id="displayOnMouseover" style="visibility:hidden">cachée</p>
+    <script>
+        function displayHiddenDiv() {
+            document.getElementById("displayOnMouseover").style.visibility="visible";
+        }
+    </script>
+ 
+    <!-- SIGMA GRINDSET BONUS : rajouter un texte via javascript à la suite de para2-->
+    <div id="new">
+        <p id="para1">hey</p>
+        <p id="para2">heyheyhey</p>
+    </div>
+    <script>
+        document.getElementById("new").innerHTML+="<p id=\"para3\">heyheyheyheyhey</p>";
+    </script>
+ 
+    
+</body>
+ 
+</html>
