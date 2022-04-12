@@ -24,11 +24,18 @@ playersArr.push(new Player("Nath", 52, "normal", 0.56, "arthaud.jpg"));
 
 console.log(playersArr);
 
-function displayJoueur(joueur) {
+function displayJoueur(joueur, reverseName=false) {
 	let resultStr="";
-	resultStr+="<img class=\"playerImage\" src=\"images/"+joueur.imageLink+"\">\n";
-	resultStr+="<div class=\"playerName\">"+joueur.name+"</div>\n";
-	resultStr+="<div class=\"playerAge\">"+joueur.age+" Ans</div>\n";
+
+	if(reverseName) {
+		resultStr+="<img class=\"playerImage\" src=\"images/"+joueur.imageLink+"\">\n";
+		resultStr+="<div class=\"playerName\">"+joueur.name.split("").reverse().join("")+"</div>\n";
+		resultStr+="<div class=\"playerAge\">snA "+joueur.age.toString().split("").reverse().join("")+"</div>\n";
+	} else {
+		resultStr+="<img class=\"playerImage\" src=\"images/"+joueur.imageLink+"\">\n";
+		resultStr+="<div class=\"playerName\">"+joueur.name+"</div>\n";
+		resultStr+="<div class=\"playerAge\">"+joueur.age+" Ans</div>\n";
+	}
 
 	return resultStr;
 }
@@ -36,15 +43,21 @@ function displayJoueur(joueur) {
 function loader() {
 	joueur1=playersArr[Math.floor(Math.random()*playersArr.length)];
 	joueur2=playersArr[Math.floor(Math.random()*playersArr.length)];
+	let revName=false;
+	if(joueur1===joueur2) {
+		revName=true;
+	}
 	/*console.log(joueur1);
 	console.log(joueur2);*/
+
+
 
 	refDivJ1 = document.getElementById("joueur1");
 	refDivJ2 = document.getElementById("joueur2");
 	refResultat = document.getElementById("resultat");
 
 	refDivJ1.innerHTML = displayJoueur(joueur1);
-	refDivJ2.innerHTML = displayJoueur(joueur2);
+	refDivJ2.innerHTML = displayJoueur(joueur2, revName);
 	refResultat.innerHTML = "";
 
 	refDivJ1.style.transform = "none";
