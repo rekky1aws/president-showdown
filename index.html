@@ -5,22 +5,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Président Showdown</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="../style_disclaimer.css">
 	<link rel="icon" type="image/x-icon" href="images/france.ico">
 	<script type="text/javascript" src="app.js"></script>
 </head>
 <body onload=loader();>
 	<div id="zoneJoueurs">
 		<div id="joueur1" class="joueur">
-			
+			<!--- On prépare l'emplacement pour la carte du joueur 1. Comme on remplace le innerHTML de cette div dans le JS, ce commentaire n'apparaitra pas dans la version montrée par le navigateur du code source. --->
 		</div>
 		<div id="joueur2" class="joueur">
-			
+			<!-- Meme chose qu'au dessus mais pour le joueur 2. -->
 		</div>
 
 	</div>
 	<div class="buttonContainer">
 		<button onclick="loader();" class="boutons">Relancer</button>
-		<div id="resultat" class="boutons" onclick="window.alert('Arrete de me cliquer dessus, je suis pas un bouton utile');"></div>
+		<div id="resultat" class="boutons" onclick="window.alert('Arrete de me cliquer dessus, je suis pas un bouton utile');"></div> <!-- Lorsque l'on clique sur cette div, on a une alerte qui, pour la blague, nous indique que ce n'est pas un bouton. -->
 		<button onclick="startFight();" class="boutons">Combat</button>
 	</div>
 
