@@ -104,6 +104,7 @@ body {
 .playerName {
 	font-size: 50px;
 	font-weight: bold;
+	margin: 5px;
 }
 
 .playerAge {
@@ -115,4 +116,38 @@ body {
 #joueur2 > .playerImage {
 	/* On inverse l'image du joueur 2 afin que les combattants se regardent. */
 	transform: scaleX(-1);
+}
+
+.reversed {
+	transform: scaleX(-1);
+}
+
+.playerDesc {
+	margin: 10px;
+}
+
+#updateNotifier {
+	transition: ease-in-out 0.5s;
+	position: fixed;
+	background-color:  gold;
+	right: 10px;
+	bottom: -100%;
+	color: black;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.closeIcon {
+	height:  20px;
+	width: 20px;
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	border-radius: 50%;
+}
+
+h1 {
+	text-align: center;
+	font-size: 50px;
+	font-weight: bolder;
 }

@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="app.js"></script>
 </head>
 <body onload=loader();>
+	<h1>President Showdown</h1>
 	<div id="zoneJoueurs">
 		<div id="joueur1" class="joueur">
 			<!--- On prépare l'emplacement pour la carte du joueur 1. Comme on remplace le innerHTML de cette div dans le JS, ce commentaire n'apparaitra pas dans la version montrée par le navigateur du code source. --->
@@ -25,5 +26,15 @@
 		<button onclick="startFight();" class="boutons">Combat</button>
 	</div>
 
+	<div id="updateNotifier">
+		<img src="images/close.png" class="closeIcon" onclick="hideNotifier();">
+		<h2>Nouvelle mise à Jour !</h2>
+		<ul>
+			<li>Des nouveaux combattants</li>
+			<li>Des descriptions pour tous les combattants</li>
+			<li>Le titre du jeu</li>
+			<li>Cette notification incroyable</li>
+		</ul>
+	</div>
 </body>
 </html>

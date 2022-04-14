@@ -1,7 +1,10 @@
+let pageLoaded=false;
+
 class Player {
-	constructor(name, age, type, strength, imageLink="placeholder.png") {
+	constructor(name, age, description, type, strength, imageLink="placeholder.png") {
 		this.name=name;
 		this.age=age;
+		this.description=description;
 		this.type=type;
 		this.strength=strength;
 		this.imageLink=imageLink;
@@ -10,19 +13,27 @@ class Player {
 
 let playersArr = [] // Initialisation du tableau qui va contenir tous les joueurs.
 
-playersArr.push(new Player("Manu", 44, "premium", 27.85, "macron.jpg"));
-playersArr.push(new Player("Marine", 53, "premium", 23.15, "lepen.jpg"));
-playersArr.push(new Player("Jean-Luc", 70, "premium", 21.95, "melenchon.jpg"));
-playersArr.push(new Player("Eric", 63, "normal", 7.07, "zemmour.jpg"));
-playersArr.push(new Player("Valérie", 54, "normal", 4.78, "regresse.jpg"));
-playersArr.push(new Player("Yannick", 54, "normal", 4.63, "jadot.jpg"));
-playersArr.push(new Player("Jean", 66, "normal", 3.13, "lasalle.jpg"));
-playersArr.push(new Player("Fabien", 52, "premium", 2.28, "roussel.jpg"));
-playersArr.push(new Player("Nico", 61, "normal", 2.06, "dupont-aignan.jpg"));
-playersArr.push(new Player("Anne", 62, "normal", 1.75, "hidalgo.jpg"));
-playersArr.push(new Player("Philou", 55, "normal", 0.77, "poutou.jpg"));
-playersArr.push(new Player("Nath", 52, "normal", 0.56, "arthaud.jpg"));
-playersArr.push(new Player("Sylvain Pierre Durif", 1664, "superpremium", 10000, "durif.jpg"));
+playersArr.push(new Player("Manu", 44, "L'archéologue", "normal", 27.85, "macron.jpg"));
+playersArr.push(new Player("Marine", 53, "A des actions dans l'aviation", "normal", 23.15, "lepen.jpg"));
+playersArr.push(new Player("Jean-Luc", 70, "La république, c'est lui", "normal", 21.95, "melenchon.jpg"));
+playersArr.push(new Player("Eric", 63, "Paye des sommes astronomiques pour changer son wiki", "normal", 7.07, "zemmour.jpg"));
+playersArr.push(new Player("Valérie", 54, "A perdu 5 millions", "normal", 4.78, "regresse.jpg"));
+playersArr.push(new Player("Yannick", 54, "Ecolo vite fait", "normal", 4.63, "jadot.jpg"));
+playersArr.push(new Player("Jean", 66, "Possède une magnifique tondeuse", "normal", 3.13, "lasalle.jpg"));
+playersArr.push(new Player("Fabien", 52, "Kiffe les dégradés de couleurs", "normal", 2.28, "roussel.jpg"));
+playersArr.push(new Player("Nico", 61, "Est de droite", "normal", 2.06, "dupont-aignan.jpg"));
+playersArr.push(new Player("Anne", 62, "Est de gauche", "normal", 1.75, "hidalgo.jpg"));
+playersArr.push(new Player("Philou", 55, "Le crack sous crack", "normal", 0.77, "poutou.jpg"));
+playersArr.push(new Player("Nath", 52, "C'est qui ?", "normal", 0.56, "arthaud.jpg"));
+playersArr.push(new Player("Sylvain Pierre Durif", 1664, "Il voit danser des serpents et des singes", "superpremium", 10000, "durif.jpg"));
+playersArr.push(new Player("Jacky", 86, "Change la durée de sa propre présidence", "premium", 19.88, "chirac.jpg"));
+playersArr.push(new Player("Jacky (skin alternatif)", 86, "A l\'air plus vivant que ça femme", "premium", 82.21, "chirac_alt.jpg"));
+playersArr.push(new Player("François", 67, "We can be do what we want to do", "premium", 28.63, "hollande.jpg"));
+playersArr.push(new Player("L'autre Nico", 67, "Veut dégager la racaille au Kärcher", "premium", 31.18, "sarkozy.jpg"));
+playersArr.push(new Player("Valery", 94, "Le clutcher", "premium", 32.6, "vge.jpg"));
+playersArr.push(new Player("Valery (skin alternatif)", 94, "A perdu son duel contre Elisabeth II", "premium", 50.81, "vge_alt2.jpg"));
+playersArr.push(new Player("Quentin", 35, "Il est dans le jeu lui ?", "superpremium", 100, "walter_white.jpg"));
+playersArr.push(new Player("François Mitterand", 79, "Collectionne les premiers ministres", "premium", 34.10, "mitterand.jpg"));
 
 
 // Affichage du tableau des joueurs en décommantant la ligne ci-dessous.
@@ -31,21 +42,27 @@ playersArr.push(new Player("Sylvain Pierre Durif", 1664, "superpremium", 10000, 
 function displayJoueur(joueur, reverseName=false) { //Cette fonction retourne le code HTML permettant d'afficher les joueurs.
 //reverseName sert ici pour la blague : faire un mode mirroir de la carte du joueur2 si c'est le meme combattant que joueur 1.
 	let resultStr="";
+	let reverser=""
 
 	if(reverseName) {
-		resultStr+="<img class=\"playerImage\" src=\"images/"+joueur.imageLink+"\">\n";
-		resultStr+="<div class=\"playerName\">"+joueur.name.split("").reverse().join("")+"</div>\n";
-		resultStr+="<div class=\"playerAge\">snA "+joueur.age.toString().split("").reverse().join("")+"</div>\n";
-	} else {
-		resultStr+="<img class=\"playerImage\" src=\"images/"+joueur.imageLink+"\">\n";
-		resultStr+="<div class=\"playerName\">"+joueur.name+"</div>\n";
-		resultStr+="<div class=\"playerAge\">"+joueur.age+" Ans</div>\n";
+		reverser=" reversed";
 	}
+	resultStr+="<img class=\"playerImage"+reverser+"\" src=\"images/"+joueur.imageLink+"\">\n";
+	resultStr+="<div class=\"playerName"+reverser+"\">"+joueur.name+"</div>\n";
+	resultStr+="<div class=\"playerAge"+reverser+"\">"+joueur.age+" Ans</div>\n";
+	resultStr+="<div class=\"playerDesc"+reverser+"\">"+joueur.description+"</div>\n";	
 
 	return resultStr;
 }
 
 function loader() {
+	// On affiche la notification de mise à jour si c'est le premier chargement de la page.
+	if(!pageLoaded) {
+		let refNotif = document.getElementById("updateNotifier");
+		refNotif.style.bottom="20px";
+		pageLoaded=true;
+	}
+
 	//On choisit quels joueurs se battront selon le tableau des joueurs (playersArr).
 	joueur1=playersArr[Math.floor(Math.random()*playersArr.length)];
 	joueur2=playersArr[Math.floor(Math.random()*playersArr.length)];
@@ -120,4 +137,9 @@ function startFight() {
 		// On affiche l'égaité dans la div des résultats.
 		refResultat.innerHTML="Egalité";
 	}
+}
+
+function hideNotifier() {
+	let refNotif = document.getElementById("updateNotifier");
+	refNotif.style.bottom="-100%";
 }
