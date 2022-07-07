@@ -17,7 +17,7 @@ body {
 	background-color:  white;
 	color: #1D1D1D;
 	border: none;
-	border-radius: 6px;
+	border-radius: 20px;
 	margin: 15px;
 	padding: 10px;
 
@@ -56,11 +56,11 @@ body {
 
 .joueur {
 	/* Dimensions : */
-	height: 500px;
+	height: 550px;
 	width:  300px;
 
 	/* Visuels : */
-	margin: 10px 30px;
+	margin: 10px 30px 30px 30px;
 	border-radius: 25px;
 	background-color: #c6c4b8;
 	color: #1D1D1D;
@@ -150,4 +150,27 @@ h1 {
 	text-align: center;
 	font-size: 50px;
 	font-weight: bolder;
+}
+
+#timeSpent {
+	background-color: darkblue;
+	width: 200px;
+	height: 50px;
+	border-radius: 20px;
+	padding: 20px;
+	position: fixed;
+	left: 10px;
+	bottom:  20px;
+	font-size: 18px;
+	font-weight: bold;
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+}
+
+.timeDiv {
+	display: inline-block;
+
 }
