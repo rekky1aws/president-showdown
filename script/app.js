@@ -3,41 +3,73 @@ let secondes=0;
 let minutes=0;
 
 class Player {
-	constructor(name, age, description, type, strength, imageLink="placeholder.png") {
+	constructor(name, birthDate, deathDate, description, type, strength, imageLink="placeholder.png") {
 		this.name=name;
-		this.age=age;
+		this.birthDate=birthDate;
+		this.deathDate=deathDate;
 		this.description=description;
 		this.type=type;
 		this.strength=strength;
 		this.imageLink=imageLink;
 	}
+
+	get age () {
+		let bDate = new Date (this.birthDate);
+		let dDate;
+		if (this.deathDate == null)
+		{
+			dDate = new Date();
+		} else {
+			dDate = new Date(this.deathDate);
+		}
+
+		bDate = [bDate.getFullYear(), bDate.getMonth()+1, bDate.getDate()];
+		dDate = [dDate.getFullYear(), dDate.getMonth()+1, dDate.getDate()];
+
+		let rslt = dDate[0] - bDate[0];
+
+		if (dDate[1] > bDate[1]) {
+			return rslt;
+		} else if (dDate[1] == bDate[1]) {
+			if (dDate[2] >= bDate[2])
+			{
+				return rslt;
+			}
+		}
+
+		return rslt - 1;
+	}
 }
 
 let playersArr = [] // Initialisation du tableau qui va contenir tous les joueurs.
 
-playersArr.push(new Player("Manu", 44, "L'archéologue", "normal", 27.85, "macron.jpg"));
-playersArr.push(new Player("Marine", 53, "A des actions dans l'aviation", "normal", 23.15, "lepen.jpg"));
-playersArr.push(new Player("Jean-Luc", 70, "La république, c'est lui", "normal", 21.95, "melenchon.jpg"));
-playersArr.push(new Player("Eric", 63, "Paye des sommes astronomiques pour changer son wiki", "normal", 7.07, "zemmour.jpg"));
-playersArr.push(new Player("Valérie", 54, "A perdu 5 millions", "normal", 4.78, "regresse.jpg"));
-playersArr.push(new Player("Yannick", 54, "Ecolo vite fait", "normal", 4.63, "jadot.jpg"));
-playersArr.push(new Player("Jean", 66, "Possède une magnifique tondeuse, et sa petite cochonne préférée l'attend a la maison", "normal", 3.13, "lasalle.jpg"));
-playersArr.push(new Player("Fabien", 52, "Kiffe les dégradés de couleurs", "normal", 2.28, "roussel.jpg"));
-playersArr.push(new Player("Nico", 61, "Est de droite", "normal", 2.06, "dupont-aignan.jpg"));
-playersArr.push(new Player("Anne", 62, "Est de gauche", "normal", 1.75, "hidalgo.jpg"));
-playersArr.push(new Player("Philou", 55, "Le crack sous crack", "normal", 0.77, "poutou.jpg"));
-playersArr.push(new Player("Nath", 52, "C'est qui ?", "normal", 0.56, "arthaud.jpg"));
-playersArr.push(new Player("Sylvain Pierre Durif", 1664, "Il voit danser des serpents et des singes", "superpremium", 100, "durif.jpg"));
-playersArr.push(new Player("Jacky", 86, "Change la durée de sa propre présidence", "premium", 19.88, "chirac.jpg"));
-playersArr.push(new Player("Jacky (skin alternatif)", 86, "A l\'air plus vivant que ça femme", "premium", 82.21, "chirac_alt.jpg"));
-playersArr.push(new Player("François", 67, "We can be do what we want to do", "premium", 28.63, "hollande.jpg"));
-playersArr.push(new Player("L'autre Nico", 67, "Veut dégager la racaille au Kärcher", "premium", 31.18, "sarkozy.jpg"));
-playersArr.push(new Player("Valery", 94, "Le clutcher", "premium", 32.6, "vge.jpg"));
-playersArr.push(new Player("Valery (skin alternatif)", 94, "A perdu son duel contre Elisabeth II", "premium", 50.81, "vge_alt2.jpg"));
-playersArr.push(new Player("Quentin", 35, "Il est dans le jeu lui ?", "superpremium", 100, "walter_white.jpg"));
-playersArr.push(new Player("François Mitterand", 79, "Collectionne les premiers ministres", "premium", 34.10, "mitterand.jpg"));
-playersArr.push(new Player("Ségo", 68, "Eric Zemmour version femme de gauche", "normal", 25.87, "royal.jpg"));
-playersArr.push(new Player("Jean-Ma", 93, "C'est un point de détail", "normal", 16.86, "jmlepen.jpg"));
+playersArr.push(new Player("Manu", "1977-12-21", null, "L'archéologue", "normal", 27.85, "macron.jpg"));
+playersArr.push(new Player("Marine", "1968-08-05", null, "A des actions dans l'aviation", "normal", 23.15, "lepen.jpg"));
+playersArr.push(new Player("Jean-Luc", "1951-08-19", null, "La république, c'est lui", "normal", 21.95, "melenchon.jpg"));
+playersArr.push(new Player("Eric", "1958-08-31", null, "Paye des sommes astronomiques pour changer son wiki", "normal", 7.07, "zemmour.jpg"));
+playersArr.push(new Player("Valérie", "1967-07-14", null, "A perdu 5 millions", "normal", 4.78, "regresse.jpg"));
+playersArr.push(new Player("Yannick", "1967-07-27", null, "Ecolo vite fait", "normal", 4.63, "jadot.jpg"));
+playersArr.push(new Player("Jean", "1955-05-03", null, "Possède une magnifique tondeuse, et sa petite cochonne préférée l'attend a la maison", "normal", 3.13, "lasalle.jpg"));
+playersArr.push(new Player("Fabien", "1969-04-16", null, "Kiffe les dégradés de couleurs", "normal", 2.28, "roussel.jpg"));
+playersArr.push(new Player("Nico", "1961-03-07", null, "Est de droite", "normal", 2.06, "dupont-aignan.jpg"));
+playersArr.push(new Player("Anne", "1959-06-19", null, "Est de gauche", "normal", 1.75, "hidalgo.jpg"));
+playersArr.push(new Player("Philou", "1967-03-14", null, "Le crack sous crack", "normal", 0.77, "poutou.jpg"));
+playersArr.push(new Player("Nath", "1970-02-23", null, "C'est qui ?", "normal", 0.56, "arthaud.jpg"));
+playersArr.push(new Player("Sylvain Pierre Durif", "1969-08-23", null, "Il voit danser des serpents et des singes", "superpremium", 100, "durif.jpg"));
+playersArr.push(new Player("Jacky", "1932-11-29", "2019-09-26", "Change la durée de sa propre présidence", "premium", 19.88, "chirac.jpg"));
+playersArr.push(new Player("Jacky (skin alternatif)", "1932-11-29", "2019-09-26", "A l\'air plus vivant que ça femme", "premium", 82.21, "chirac_alt.jpg"));
+playersArr.push(new Player("François", "1954-08-12", null, "We can be do what we want to do", "premium", 28.63, "hollande.jpg"));
+playersArr.push(new Player("Porte Bonheur", "1955-01-28", null, "Veut dégager la racaille au Kärcher", "premium", 31.18, "sarkozy.jpg"));
+playersArr.push(new Player("Valery", "1926-02-29", "2020-12-02", "Le clutcher", "premium", 32.6, "vge.jpg"));
+playersArr.push(new Player("Valery (skin alternatif)", "1926-02-29", "2020-12-02", "A perdu son duel contre Elisabeth II", "premium", 50.81, "vge_alt2.jpg"));
+playersArr.push(new Player("Quentin", "1987-01-01", null, "Il est dans le jeu lui ?", "superpremium", 100, "walter_white.jpg"));
+playersArr.push(new Player("Tonton", "1916-10-26", "1996-01-08", "Collectionne les premiers ministres", "premium", 34.10, "mitterand.jpg"));
+playersArr.push(new Player("Tonton (skin alternatif)", "1916-10-26", "1996-01-08", "Mourir pour unir", "premium", 51.8, "mitterand_alt.jpg"));
+playersArr.push(new Player("Ségo", "1953-09-22", null, "Eric Zemmour si c'était une femme de gauche", "normal", 25.87, "royal.jpg"));
+playersArr.push(new Player("Jean-Ma", "1928-06-20", null, "C'est un point de détail", "normal", 16.86, "jmlepen.jpg"));
+playersArr.push(new Player("Pompom", "1911-07-05", "1974-04-02", "Devenu un hopital depuis.", "normal", 44.47, "pompidou.jpg"));
+playersArr.push(new Player("Pompom (skin alternatif)", "1911-07-05", "1974-04-02", "Le bassiste de Charles Aznavour était très triste", "normal", 58.21, "pompidou_alt.jpg"));
+
 
 
 // Affichage du tableau des joueurs en décommantant la ligne ci-dessous.
